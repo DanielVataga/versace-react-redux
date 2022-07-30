@@ -1,0 +1,20 @@
+.NewInWrapper {
+
+  .NewInTitleWrapper {
+    margin: 150px 0 100px;
+
+    h2 {
+      font-family: "SaolRegular";
+      font-size: 60px;
+      line-height: 69px;
+      font-weight: 400;
+    }
+  }
+  
+
+  .CardWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+

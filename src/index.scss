@@ -1,0 +1,145 @@
+// @import "~animate.css/animate.css";
+
+// Poppins font
+@font-face {
+  font-family: "PoppinsRegular";
+  src:
+    url(./assets/fonts/PoppinsRegular/Poppins.woff2) format("woff2"),
+    url(./assets/fonts/PoppinsRegular/Poppins.woff) format("woff"),
+    url(./assets/fonts/PoppinsRegular/Poppins.ttf) format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PoppinsLightRegular";
+  src:
+    url(./assets/fonts/PoppinsLightRegular/PoppinsLight.woff2) format("woff2"),
+    url(./assets/fonts/PoppinsLightRegular/PoppinsLight.woff) format("woff"),
+    url(./assets/fonts/PoppinsLightRegular/PoppinsLight.ttf) format("truetype");
+  font-weight: 300;
+}
+
+//Saol Display font
+
+@font-face {
+  font-family: "SaolRegular";
+  src:
+    url(./assets/fonts/SaolRegular/SaolDisplay-Regular.woff2) format("woff2"),
+    url(./assets/fonts/SaolRegular/SaolDisplay-Regular.woff) format("woff"),
+    url(./assets/fonts/SaolRegular/SaolDisplay-Regular.ttf) format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "SaolLightRegular";
+  src:
+    url(./assets/fonts/SaolLightRegular/SaolDisplay-Light.woff2) format("woff2"),
+    url(./assets/fonts/SaolLightRegular/SaolDisplay-Light.woff) format("woff"),
+    url(./assets/fonts/SaolLightRegular/SaolDisplay-Light.ttf) format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "SaolLightItalic";
+  src:
+    url(./assets/fonts/SaolLightItalic/SaolDisplay-LightItalic.woff2) format("woff2"),
+    url(./assets/fonts/SaolLightItalic/SaolDisplay-LightItalic.woff) format("woff"),
+    url(./assets/fonts/SaolLightItalic/SaolDisplay-LightItalic.ttf) format("truetype");
+  font-weight: 300;
+}
+
+//Reset styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li {
+  margin: 0;
+}
+
+body {
+  font-family: "PoppinsRegular";
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+button,
+input[type="button"] {
+  border: 1px solid #000;
+  background: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: all .3s ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+input{
+  border: none;
+  border-bottom: 1px solid #000;
+
+  &:required,&:invalid { 
+    box-shadow:none; 
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+// GLOBAL STYLES
+
+body {
+  padding: 60px 100px;
+}
+
+.italicFont {
+  font-family: "SaolLightItalic";
+  text-transform: lowercase;
+}
+
+.CardContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  column-gap: 20px;
+}

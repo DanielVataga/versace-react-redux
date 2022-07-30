@@ -1,0 +1,22 @@
+.titleSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .title {
+    text-align: center;
+    h1 {
+      font-family: "SaolRegular";
+      text-transform: uppercase;
+      font-weight: 400;
+      line-height: 92px;
+      font-size: 90px;
+    }
+
+    span {
+      text-transform: lowercase;
+      font-family: "SaolLightItalic";
+      font-weight: 300;
+    }
+  }
+}

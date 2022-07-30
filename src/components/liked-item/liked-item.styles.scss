@@ -1,0 +1,59 @@
+.LikedItemWrapper {
+  font-family: "PoppinsLightRegular";
+  display: flex;
+  flex-direction: column;
+  min-width: 1000px;
+
+  .LikedItemContainer {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    height: 230px;
+    display: flex;
+    margin: 15px 0;
+    padding-bottom: 30px;
+
+    .ImageContainer {
+      height: 100%;
+      width: 180px;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .LikedItemContent {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: space-between;
+      margin-left: 30px;
+
+      .LikedItemContentHeader {
+        display: flex;
+        justify-content: space-between;
+
+        .NameContainer {
+          font-size: 18px;
+        }
+
+        .DeleteItemContainer {
+          span {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .LikedItemContentFooter {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+
+        .SizeContainer {
+          display: flex;
+          flex-direction: column;
+          font-size: 16px;
+          color: #808080;
+        }
+      }
+    }
+  }
+}

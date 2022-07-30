@@ -1,0 +1,62 @@
+.CartWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 650px;
+
+  .CartItemsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .emtyCartWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .emptyCart {
+        margin-top: 100px;
+        text-transform: uppercase;
+        font-family: "SaolLightRegular";
+        font-size: 60px;
+      }
+
+      button {
+        margin-top: 35px;
+        padding: 15px 0;
+      }
+
+
+    }
+
+    
+  }
+
+  .CheckoutWrapper {
+    min-width: 1000px;
+
+    .SubtotalInfo {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      
+      .SubtotalText {
+        font-weight: 300;
+        font-size: 16px;
+      }
+
+      .SubtotalPrice {
+        font-family: "SaolLightItalic";
+        font-weight: 300;
+        font-size: 20px;
+      }
+    }
+
+    .CheckoutButton {
+      padding: 16px 0;
+      margin-bottom: 30px;
+    }
+  }
+}
