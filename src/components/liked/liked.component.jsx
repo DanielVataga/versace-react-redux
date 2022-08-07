@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"
 
-import { LikedContext } from "../../contexts/liked.context";
+import { selectLikedItems } from "../../store/liked/liked.selector";
+
 import LikedItem from "../liked-item/liked-item.component";
 
 import "./liked.styles.scss";
 
+
 const Liked = () => {
-  const { likedItems } = useContext(LikedContext);
+  const likedItems = useSelector(selectLikedItems)
   const navigate = useNavigate()
 
   return (

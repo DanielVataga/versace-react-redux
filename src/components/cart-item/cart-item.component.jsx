@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { ReactComponent as CrossSvg } from "../../assets/svg/cross.svg";
@@ -6,10 +6,7 @@ import { ReactComponent as CrossSvg } from "../../assets/svg/cross.svg";
 import { selectCartItems } from "../../store/cart/cart.selectors";
 import { removeProductFromCart, addQty, removeQty } from "../../store/cart/cart.action";
 
-
-
 import "./cart-item.styles.scss";
-
 
 const CartItem = ({ cartElement }) => {
   const dispatch = useDispatch()

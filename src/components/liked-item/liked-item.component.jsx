@@ -1,26 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as CrossSvg } from "../../assets/svg/cross.svg";
 
-import { LikedContext } from "../../contexts/liked.context";
-
 import { addProductToCart } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selectors";
+
+import { removeProductFromLiked } from "../../store/liked/liked.action";
+import { selectLikedItems } from "../../store/liked/liked.selector";
 
 import "./liked-item.styles.scss";
 
 const LikedItem = ({ LikedElement }) => {
   const { id, name, image } = LikedElement;
-  const { likedItems, removeProductFromLiked } = useContext(LikedContext);
   
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const cart = useSelector(selectCartItems)
+  const likedItems = useSelector(selectLikedItems)
 
   const addToCart = () => dispatch(addProductToCart(LikedElement))
+  const removeFromLiked = () => dispatch(removeProductFromLiked(id))
 
   const currentProduct = likedItems.find(el => el.id === id)
 
@@ -38,7 +40,7 @@ const LikedItem = ({ LikedElement }) => {
             </div>
 
             <div className="DeleteItemContainer">
-              <span onClick={() => removeProductFromLiked(id)}>
+              <span onClick={removeFromLiked}>
                 <CrossSvg />
               </span>
             </div>

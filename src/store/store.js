@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { compose, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
+
 import { cartReducer } from './cart/cart.reducer'
+import { likedReducer } from './liked/liked.reducer'
 
 // const loggerMiddleware = (store) => (next) => (action) => {
 //   if (!action.type) {
@@ -17,7 +19,8 @@ import { cartReducer } from './cart/cart.reducer'
 
 export const store = configureStore({
   reducer: {
-    cart: cartReducer
+    cart: cartReducer,
+    liked: likedReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     immutableCheck: false,

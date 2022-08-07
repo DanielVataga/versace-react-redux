@@ -1,14 +1,15 @@
-import React, {useContext} from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux/es/exports";
 
-import { LikedContext } from "../../contexts/liked.context";
 import { SHOP_DATA } from "../../shop-data";
 import { ReactComponent as LikedIcon } from "../../assets/svg/addLiked.svg";
 
 import { selectCartItems } from '../../store/cart/cart.selectors'
 import { addProductToCart, getSize } from "../../store/cart/cart.action";
+
+import { addItemToLiked, getSizeToLiked } from "../../store/liked/liked.action";
 
 import "./product-page.styles.scss";
 
@@ -20,9 +21,8 @@ const ProductPage = () => {
   const dispatch = useDispatch()
 
   const product = SHOP_DATA.find((el) => +id === el.id);
-  const cart = useSelector(selectCartItems)
 
-  const { addItemToLiked, getSizeToLiked } = useContext(LikedContext);
+  const cart = useSelector(selectCartItems)
 
   return (
     <div className="ProductPageWrapper">
@@ -51,7 +51,7 @@ const ProductPage = () => {
                   key={i}
                   onClick={() => {
                     dispatch(getSize(size));
-                    getSizeToLiked(size);
+                    dispatch(getSizeToLiked(size));
                   }}
                 >
                   {size}
@@ -76,7 +76,7 @@ const ProductPage = () => {
               <div className="likedContainer">
                 <LikedIcon
                   className="LikedSvg"
-                  onClick={() => addItemToLiked(product)}
+                  onClick={() => dispatch(addItemToLiked(product))}
                 />
               </div>
             </div>
