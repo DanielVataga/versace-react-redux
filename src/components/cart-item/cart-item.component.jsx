@@ -1,22 +1,28 @@
 import React, { useContext } from "react";
-import "./cart-item.styles.scss";
+import { useSelector, useDispatch } from "react-redux";
+
 import { ReactComponent as CrossSvg } from "../../assets/svg/cross.svg";
-import { CartContext } from "../../contexts/cart.context";
+
+import { selectCartItems } from "../../store/cart/cart.selectors";
+import { removeProductFromCart, addQty, removeQty } from "../../store/cart/cart.action";
+
+
+
+import "./cart-item.styles.scss";
+
 
 const CartItem = ({ cartElement }) => {
-  const { id, name, image, price } = cartElement;
-  const { 
-    removeProductFromCart, 
-    addQty,
-    removeQty,
-    // size,
-    cart
-  } = useContext(CartContext);
+  const dispatch = useDispatch()
 
-  const removeQtyHandler = () => removeQty(id)
-  const addQtyHandler = () => addQty(id)
+  const { id, name, image, price } = cartElement;
+  const cart = useSelector(selectCartItems)
+
+  const removeQtyHandler = () => dispatch(removeQty(cart, id))
+  const addQtyHandler = () => dispatch(addQty(cart, id))
 
   const currentProduct = cart.find(el => el.id === id)
+
+
 
   return (
     <div className="CartItemWrapper">
@@ -32,7 +38,7 @@ const CartItem = ({ cartElement }) => {
             </div>
 
             <div className="DeleteItemContainer">
-              <span onClick={() => removeProductFromCart(id)}>
+              <span onClick={() => dispatch(removeProductFromCart(id))}>
                 <CrossSvg />
               </span>
             </div>

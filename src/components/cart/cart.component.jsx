@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
-import "./cart.styles.scss";
-import { CartContext } from "../../contexts/cart.context";
-import CartItem from "../cart-item/cart-item.component";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import CartItem from "../cart-item/cart-item.component";
+import { selectCartItems, selectCartSummary } from "../../store/cart/cart.selectors";
+
+import "./cart.styles.scss";
+
 const Cart = () => {
-  const { cart, summaryPrice } = useContext(CartContext);
+  const cart = useSelector(selectCartItems)
+  const summary = useSelector(selectCartSummary)
   const navigate = useNavigate()
-  // const cart = state.cart
-  console.log(cart);
+
   return (
     <div className="CartWrapper">
       <div className="CartItemsWrapper">
@@ -30,7 +33,8 @@ const Cart = () => {
           <div className="SubtotalInfo">
             <span className="SubtotalText">Subtotal:</span>
 
-            <span className="SubtotalPrice">{summaryPrice} $</span>
+            <span className="SubtotalPrice">{summary} $</span>
+
           </div>
 
           <button className="CheckoutButton">Checkout</button>

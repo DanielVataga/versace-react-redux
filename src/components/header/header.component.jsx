@@ -1,4 +1,4 @@
-import React, {Fragment, useContext} from "react";
+import React, {Fragment} from "react";
 
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
@@ -7,12 +7,15 @@ import { ReactComponent as LogoSvg } from "../../assets/svg/logo.svg";
 import { ReactComponent as SearchSvg } from "../../assets/svg/search.svg";
 import { ReactComponent as LikedSvg } from "../../assets/svg/liked.svg";
 import { ReactComponent as CartSvg } from "../../assets/svg/cart.svg";
-import { CartContext } from "../../contexts/cart.context";
+
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selectors";
+
 
 import './header.styles.scss'
 
 const Header = () => {
-  const {cart} = useContext(CartContext)
+  const cart = useSelector(selectCartItems)
   
   return (
     <Fragment>

@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { CartContext } from "../../contexts/cart.context";
+
+import { useSelector, useDispatch } from "react-redux/es/exports";
+
 import { LikedContext } from "../../contexts/liked.context";
 import { SHOP_DATA } from "../../shop-data";
 import { ReactComponent as LikedIcon } from "../../assets/svg/addLiked.svg";
+
+import { selectCartItems } from '../../store/cart/cart.selectors'
+import { addProductToCart, getSize } from "../../store/cart/cart.action";
 
 import "./product-page.styles.scss";
 
@@ -12,11 +17,12 @@ const ProductPage = () => {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = SHOP_DATA.find((el) => +id === el.id);
+  const dispatch = useDispatch()
 
-  const { cart, addProductToCart, getSize } = useContext(CartContext);
+  const product = SHOP_DATA.find((el) => +id === el.id);
+  const cart = useSelector(selectCartItems)
+
   const { addItemToLiked, getSizeToLiked } = useContext(LikedContext);
-  // const cart = state.cart
 
   return (
     <div className="ProductPageWrapper">
@@ -44,7 +50,7 @@ const ProductPage = () => {
                 <li
                   key={i}
                   onClick={() => {
-                    getSize(size);
+                    dispatch(getSize(size));
                     getSizeToLiked(size);
                   }}
                 >
@@ -53,10 +59,11 @@ const ProductPage = () => {
               ))}
             </ul>
             <div className="ButtonsContainer">
+
               {!cart.find((el) => el.id === +id) ? (
                 <button
                   className="AddToBag"
-                  onClick={() => addProductToCart(product)}
+                  onClick={() => dispatch(addProductToCart(product))}
                 >
                   Add To Bag
                 </button>

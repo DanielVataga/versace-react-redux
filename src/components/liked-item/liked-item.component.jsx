@@ -1,19 +1,26 @@
 import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as CrossSvg } from "../../assets/svg/cross.svg";
+
 import { LikedContext } from "../../contexts/liked.context";
-import { CartContext } from "../../contexts/cart.context";
+
+import { addProductToCart } from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selectors";
 
 import "./liked-item.styles.scss";
-
-
 
 const LikedItem = ({ LikedElement }) => {
   const { id, name, image } = LikedElement;
   const { likedItems, removeProductFromLiked } = useContext(LikedContext);
-  const { cart, addProductToCart } = useContext(CartContext)
+  
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const cart = useSelector(selectCartItems)
+
+  const addToCart = () => dispatch(addProductToCart(LikedElement))
 
   const currentProduct = likedItems.find(el => el.id === id)
 
@@ -45,7 +52,7 @@ const LikedItem = ({ LikedElement }) => {
             <div className="FromLikedToCartContainer">
               {
                 !cart.find(el => el.id === id) 
-                ? (<button onClick={() => addProductToCart(LikedElement)}>Add to cart</button>) 
+                ? (<button onClick={addToCart}>Add to cart</button>) 
                 : (<button onClick={() => navigate("/cart")}>To Cart</button>)
               }
 
